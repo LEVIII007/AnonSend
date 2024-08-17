@@ -74,3 +74,10 @@ export const authOptions: NextAuthOptions = {                          // based 
     signIn: '/sign-in',                         // next auth will design this page itself
   },
 };
+
+
+
+
+
+
+// jahan bhi token ya fir session ka access mil jaye hum usme se user ki info nikal payenge easily
