@@ -11,10 +11,20 @@ declare module "next-auth" {                // here we are declaring custom user
 
     interface Session {
         user: {
-            _id: string;
-            isVerified: boolean;
-            isAcceptingMessages: boolean;
-            username: string;
-        };
+            _id?: string;
+            isVerified?: boolean;
+            isAcceptingMessages?: boolean;
+            username?: string;
+        } & DefaultSession['user'];
+    }
+}
+
+
+declare module 'next-auth/jwt' {             // this is another way to build schema for next-auth. both ways are fine
+    interface JWT {
+        _id?: string;
+        isVerified?: boolean;
+        isAcceptingMessages?: boolean;
+        username?: string;
     }
 }
