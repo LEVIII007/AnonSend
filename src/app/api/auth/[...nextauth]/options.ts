@@ -44,8 +44,8 @@ export const authOptions: NextAuthOptions = {                          // based 
     }),
   ],
 
-  callbacks: {
-    async jwt({ token, user }) {
+  callbacks: {                                                  
+    async jwt({ token, user }) {                                             // we are loading this token with user data so we can make it powerful so it can be used for user info instead of calling database again and again
       if (user) {
         token._id = user._id?.toString(); // Convert ObjectId to string
         token.isVerified = user.isVerified;
@@ -55,7 +55,7 @@ export const authOptions: NextAuthOptions = {                          // based 
       return token;
     },
 
-    async session({ session, token }) {
+    async session({ session, token }) {              // this method will be called when user is logged in
       if (token) {
         session.user._id = token._id;
         session.user.isVerified = token.isVerified;
@@ -65,11 +65,12 @@ export const authOptions: NextAuthOptions = {                          // based 
       return session;
     },
   },
-  session: {
+  session: {                         // you can define strategy for session, jwt, etc
     strategy: 'jwt',
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,                 
+
   pages: {
-    signIn: '/sign-in',
+    signIn: '/sign-in',                         // next auth will design this page itself
   },
 };
