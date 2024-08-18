@@ -81,3 +81,5 @@ export const authOptions: NextAuthOptions = {                          // based 
 
 
 // jahan bhi token ya fir session ka access mil jaye hum usme se user ki info nikal payenge easily
+
+// /home/shashank/Documents/Nextproject2/mstrymessage/src/app/api/auth/[...nextauth]/options.ts

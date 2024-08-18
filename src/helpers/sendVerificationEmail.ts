@@ -15,14 +15,10 @@ export async function sendVerificationEmail(email : string, username : string, v
             subject : "Verify your email for AnonSend",
             react : VerificationEmail({username, otp : verifyCode}),
         });
-
-        return {success : true, message : "Email sent"};
-        
+        return { success: true, message: 'Verification email sent successfully.' };
+  } 
+  catch (emailError) {
+    console.error('Error sending verification email:', emailError);
+    return { success: false, message: 'Failed to send verification email.' };
     }
-    catch(err)
-    {
-        console.log( "error sending email" , err);
-        return {success : false, message : "Falied to send email"};
-    }
-
 }
