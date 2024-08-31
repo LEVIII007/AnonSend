@@ -14,6 +14,7 @@ export async function POST(request : Request){
         const verifyCode = Math.random().toString(36).slice(2);
         if(verifiedUser)                                                               // another user exists and is verified already
         {
+            console.log("Username already exists");
             return Response.json("Username already exists", {status : 400});
         }
         const existingUserByemail = await UserModel.findOne({email});
@@ -21,6 +22,7 @@ export async function POST(request : Request){
         {
            if(existingUserByemail.isVerified)                                            // used is already verified
            {
+                console.log("Email already exists");
                return Response.json("Email already exists", {status : 400});
            }
               else                                                                          // user exist but is not verified so let's verify him, but change the new password, expiry and code
