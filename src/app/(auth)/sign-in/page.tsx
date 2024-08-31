@@ -67,7 +67,7 @@ export default function SignInForm() {
           </h1>
           <p className="mb-4">Sign in to continue your secret conversations</p>
         </div>
-        <Form {...form}>
+        <Form {...form}>                                         
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               name="identifier"
