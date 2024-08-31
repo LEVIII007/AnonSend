@@ -23,7 +23,7 @@ export async function GET(request : Request){
         const queryParam = {
             username :  searchParams.get('username');
                             // parse the query parameters
-    }
+                               }
     const result = UsernameQuerySchema.safeParse(queryParam);
                       // validating the query parameters
     if(!result.success){
