@@ -3,7 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
-import { signIn } from 'next-auth/react';
+import { signIn } from 'next-auth/react';                          // next-auth signin
 import {
   Form,
   FormField,
@@ -15,7 +15,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useToast } from '@/components/ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
 import { signinSchema } from '@/schemas/signinSchema';
 
 export default function SignInForm() {
@@ -31,12 +31,13 @@ export default function SignInForm() {
 
   const { toast } = useToast();
   const onSubmit = async (data: z.infer<typeof signinSchema>) => {
+
     const result = await signIn('credentials', {
       redirect: false,
       identifier: data.identifier,
       password: data.password,
     });
-
+    
     if (result?.error) {
       if (result.error === 'CredentialsSignin') {
         toast({
