@@ -55,9 +55,10 @@ export default function SignInForm() {
     }
 
     if (result?.url) {
+      // instead of router.push we use router.replace to prevent user from going back to login page
       router.replace('/dashboard');
     }
-  };
+    };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-800">
