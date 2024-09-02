@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Project: True Anonymous Feedback System
 
-## Getting Started
+## Overview
 
-First, run the development server:
+I created a true anonymous feedback system where users can receive feedback and messages on specific topics. The platform allows users to share a link where others can send feedback anonymously.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Anonymous Feedback**: Users can receive feedback anonymously through shared links.
+- **Email OTP Signup and Authentication**: Implemented an email OTP signup process and user authentication using NextAuth.
+- **Type Validation**: Utilized Zod for type validation to ensure data integrity.
+- **AI Summarization**: Integrated OpenAI API to summarize feedback and extract key insights.
+- **Keyword Aggregation**: Implemented functionality to aggregate and analyze keywords from feedback messages.
+- **Username Uniqueness Check**: Incorporated debouncing to efficiently check for username uniqueness.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technologies Used
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Framework**: Next.js
+- **Frontend**: React, Shadcn, TailwindCSS
+- **Database**: MongoDB
+- **APIs and Services**: OpenAI API, Resend for OTP delivery, Vercel AI SDK
+- **Validation**: Zod
+- **Language**: TypeScript
 
-## Learn More
+## Description
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The system leverages Next.js and React for a seamless user experience and efficient development. MongoDB serves as the database for storing feedback and user information, while the OpenAI API enhances the user experience with AI-powered summarization. Zod ensures type safety and data validation throughout the application. The integration of Resend and Vercel AI SDK further streamlines user authentication and feedback processing.
