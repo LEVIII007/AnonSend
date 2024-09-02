@@ -4,8 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import { Button } from './ui/button';
-import { User } from 'next-auth';
-
+import { User } from 'next-auth';                        // you can dirctly take user from next-auth
 function Navbar() {
   const { data: session } = useSession();              // if i directly write data.user then it is not working
   const user : User = session?.user;

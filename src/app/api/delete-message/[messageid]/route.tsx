@@ -6,7 +6,7 @@ import { Message } from '@/model/user';
 import { NextRequest } from 'next/server';
 import { authOptions } from '../../auth/[...nextauth]/options';
 
-export async function DELETE(
+export async function DELETE(                               //need to accept dynamic parameters
   request: Request,
   { params }: { params: { messageid: string } }
 ) {
@@ -14,17 +14,19 @@ export async function DELETE(
   await dbConnect();
   const session = await getServerSession(authOptions);
   const _user: User = session?.user;
-  if (!session || !_user) {
+
+
+  if (!session || !_user) {                    //if the user is not authenticated, return a 401 status code
     return Response.json(
       { success: false, message: 'Not authenticated' },
       { status: 401 }
     );
   }
 
-  try {
+  try {                                                     //pull operator removes all instances of a value from an array
     const updateResult = await UserModel.updateOne(
-      { _id: _user._id },
-      { $pull: { messages: { _id: messageId } } }
+      { _id: _user._id },                                 //find the user by id
+      { $pull: { messages: { _id: messageId } } }          //remove the message from the user's messages array
     );
 
     if (updateResult.modifiedCount === 0) {
