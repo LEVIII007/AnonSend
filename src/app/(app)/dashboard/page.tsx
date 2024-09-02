@@ -36,6 +36,12 @@ function UserDashboard() {
   const { register, watch, setValue } = form;
   const acceptMessages = watch('acceptMessages');
 
+
+  const handleDeleteAllMessages = async () => {
+    setMessages([]);
+  };
+
+
   const fetchAcceptMessages = useCallback(async () => {
     setIsSwitchLoading(true);
     try {
