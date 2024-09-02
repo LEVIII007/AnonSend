@@ -26,7 +26,7 @@ type MessageCardProps = {
   onMessageDelete: (messageId: string) => void;
 };
 
-export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
+export function MessageCard({ message, onMessageDelete }: MessageCardProps) {        // onmessageDelete is a function that will be called when the message is deleted
   const { toast } = useToast();
 
   const handleDeleteConfirm = async () => {
@@ -37,7 +37,7 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
       toast({
         title: response.data.message,
       });
-      onMessageDelete(message._id);
+      onMessageDelete(message._id as string);
 
     } catch (error) {
       const axiosError = error as AxiosError<ApiResponse>;
@@ -58,7 +58,7 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button variant='destructive'>
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5" />                                                         
               </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
