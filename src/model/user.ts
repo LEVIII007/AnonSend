@@ -14,7 +14,30 @@ const MessageSchema : Schema<Message> = new Schema                        // Sch
 });
 
 
+export interface Analytics extends Document{
+    positive_keywords : string[];
+    negative_keywords : string[];
+}
 
+const AnalyticsSchema : Schema<Analytics> = new Schema({
+    positive_keywords : {type : [String], Default : []},
+    negative_keywords : {type : [String], Default : []},
+});
+
+
+export interface Project extends Document{
+    name : string;
+    description : string;
+    messages : Message[];
+    analytics : Analytics;
+}
+
+const ProjectSchema : Schema<Project> = new Schema({
+    name : {type : String, required : true},
+    description : {type : String, required : true},
+    messages : [MessageSchema],
+    analytics : {type : AnalyticsSchema, Default : {}}
+});
 
 
 export interface User extends Document{
@@ -25,8 +48,10 @@ export interface User extends Document{
     verifyCodeExpiry : Date;
     isVerified : boolean;
     isAcceptingMessages : boolean;
-    messages : Message[];
+    // messages : Message[];
+    projects : Project[];
 }
+
 
 const UserSchema : Schema<User> = new Schema({
     username : {type : String, required : [true, "Username is required"], trim : true, unique : true},
