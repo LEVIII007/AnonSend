@@ -61,7 +61,8 @@ const UserSchema : Schema<User> = new Schema({
     isVerified : {type : Boolean, Default : false},
     verifyCodeExpiry : {type : Date, required : [true, "verification code is required"]},
     isAcceptingMessages : {type : Boolean, required : true, Default : true},
-    messages : [MessageSchema]
+    // messages : [MessageSchema]
+    projects : [ProjectSchema]
 });
 
 
